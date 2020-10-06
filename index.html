@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+
+    <!-- External Stylesheets - CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css"> 
+
+</head>
+<body>
+    <header id="header" class="container-fluid text-center display-4 d-flex align-items-center justify-content-center">Weather Dashboard</header>
+    <div class="container mt-1">
+        <div class="row my-3">
+            <div id="form-group col-md-4">
+                <div class="input-group mb-3">
+                    <input id="cityInput" type="cityInput" class="form-control" placeholder="Search City..." aria-label="City-Name" aria-describedby="City-Name">
+                    <div class="input-group-append">
+                      <button id="cityBtn" class="btn btn-sm btn-outline-dark" type="button">Button</button>
+                    </div>
+                </div>
+                <ul id="previous" class="list-group">
+                    <!-- populate from localStorage -->
+                </ul>
+            </div>
+            <div id="curWeatherDiv" class="col-md-8 m-2"></div>
+        </div>
+        <div class="row">
+            <div class="card col-md-12">
+                <h1 class="card-title text-center">Five-Day Forecast</h1>
+                <div class="card-body">
+                    <div id="fiveDayWeather" class="card-row justify-content-center row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="assets/logic.js"></script>
+</body>
+</html>
