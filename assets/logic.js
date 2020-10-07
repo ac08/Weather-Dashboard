@@ -1,7 +1,12 @@
-console.log("logic file loaded");
 $(document).ready(function() {
 
-
+    let previousArr = JSON.parse(localStorage.getItem("previous")) || [];;
+    if (previousArr.length > 0) {
+        for (let i = 0; i < previousArr.length; i++) {
+            createListItem(previousArr[i]);
+        }; 
+        getWeather(previousArr[previousArr.length -1])
+    };
 
     // On-Click Functions 
 
@@ -47,10 +52,7 @@ $(document).ready(function() {
             let lat              = response.coord.lat;
             let long             = response.coord.lon;
 
-            // create list item for the search within "#previous section"
-            let previous    = $("#previous"); // returns an object and not an array
-            let previousArr = previous.toArray();
-            console.log(typeof previousArr);
+            // create list item for the search within "#previous section" by calling createListItem function
 
             if (previousArr.indexOf(cityInput) === -1) {
                 previousArr.push(cityInput);
@@ -86,13 +88,13 @@ $(document).ready(function() {
         
         });
     };
+
     function getFiveDayForecast(cityInput) {
         // ajaxCall for five day weather forecast based on search input value
         $.ajax({
             url: "https://api.openweathermap.org/data/2.5/forecast?q="+ cityInput + "&appid=abc55e6cb263d661248d6c9673c54a5b",
             method: "GET"
         }).done(function(response) {
-            console.log(response);
             // look for forecasts for 6:00pm each day as defined in endpoint
             // assign= Div for fiveDayWeather to variable and empty upon new search
             let fiveDayDiv  = $("#fiveDayWeather");
@@ -136,7 +138,6 @@ $(document).ready(function() {
             url: "http://api.openweathermap.org/data/2.5/uvi" + latitude + longitude + "&appid=abc55e6cb263d661248d6c9673c54a5b",
             method: "GET"
         }).done(function(response) {
-            console.log(response);
             // create html for UV Index and associated button with UV Value
             let UVIndex = $("<p>");
             UVIndex.text("UV Index: ");
