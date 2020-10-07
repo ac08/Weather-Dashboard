@@ -13,21 +13,21 @@
 <body>
     <header id="header" class="container-fluid text-center display-4 d-flex align-items-center justify-content-center">Weather Dashboard</header>
     <div class="container mt-1">
-        <div class="row my-3">
-            <div id="form-group col-md-4">
-                <div class="input-group mb-3">
+        <div class="row my-3 border border-dark">
+            <div id="form-group col-sm-4">
+                <div class="input-group m-2">
                     <input id="cityInput" type="cityInput" class="form-control" placeholder="Search City..." aria-label="City-Name" aria-describedby="City-Name">
                     <div class="input-group-append">
                       <button id="cityBtn" class="btn btn-sm btn-outline-dark" type="button">Button</button>
                     </div>
                 </div>
-                <ul id="previous" class="list-group">
+                <ul id="previous" class="list-group m-2">
                     <!-- populate item from localStorage -->
                 </ul>
             </div>
-            <div id="curWeatherDiv" class="col-md-8 m-2"></div>
+            <div id="curWeatherDiv" class="col-sm-8 m-2"></div>
         </div>
-        <div class="row">
+        <div class="row border border-dark">
             <div class="card col-md-12">
                 <h1 class="card-title text-center">Five-Day Forecast</h1>
                 <div class="card-body">

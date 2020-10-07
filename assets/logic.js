@@ -1,6 +1,9 @@
 $(document).ready(function() {
 
+    // declare variable equal to the contents of the "previous" value in LocalStorage; if null, create an empty array
     let previousArr = JSON.parse(localStorage.getItem("previous")) || [];;
+    // if conditional to loop through the array and create the list items on page load; call the getWeather function to return most data for most 
+    // recently search city (must be a city that was entered in the input field)
     if (previousArr.length > 0) {
         for (let i = 0; i < previousArr.length; i++) {
             createListItem(previousArr[i]);
@@ -17,6 +20,7 @@ $(document).ready(function() {
         // clear cityInput box 
         $("#cityInput").val("");
 
+        // call get weather with the input button's value
         getWeather(cityInput);
     });
 
@@ -33,7 +37,7 @@ $(document).ready(function() {
         $("#previous").append(listItem);
     }; 
 
-
+    // call weather API to get weather conditions for searched item and call additional APIs for other data points; render to page
     function getWeather(cityInput) {
         let apiKey     = "&appid=abc55e6cb263d661248d6c9673c54a5b";
         let currentURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + apiKey;
@@ -89,6 +93,8 @@ $(document).ready(function() {
         });
     };
 
+    // function that is called within the getWeather() function to get the five day forcast using the same city value (argument) that entered the 
+    // getWeather() function; render on the page
     function getFiveDayForecast(cityInput) {
         // ajaxCall for five day weather forecast based on search input value
         $.ajax({
@@ -129,6 +135,7 @@ $(document).ready(function() {
 
     };
 
+    // index functional that is called within the getWeather() function and uses data points lat, long that were established from getWeather() response
     function getUVIndex(lat,long) {
         let curCardBody = $("#curCardBody");
         let latitude  = "?lat=" + lat;
